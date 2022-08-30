@@ -19,10 +19,10 @@ public class UserRepository {
         users.add(new User("ivan", "ivan2"));
     }
 
-    public List<Authorities> getUserAuthorities(String login, String password) {
+    public List<Authorities> getUserAuthorities(User user) {
         long usersQuantity = users
-                .stream().filter(user -> user.getLogin().equals(login)
-                        && user.getPassword().equals(password))
+                .stream().filter(u -> u.getLogin().equals(user.getLogin())
+                        && u.getPassword().equals(user.getPassword()))
                 .count();
 
         //в коллекции должен быть только один пользователь с заданным логином и паролем
